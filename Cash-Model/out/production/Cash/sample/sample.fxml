@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+   <children>
+      <TextArea fx:id="areaMemory" editable="false" layoutX="36.0" layoutY="152.0" prefHeight="429.0" prefWidth="306.0" />
+      <TextArea fx:id="areaCash" editable="false" layoutX="455.0" layoutY="213.0" prefHeight="368.0" prefWidth="306.0" />
+      <Label layoutX="116.0" layoutY="128.0" text="Оперативная память">
+         <font>
+            <Font name="Arial" size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="594.0" layoutY="189.0" text="Кэш">
+         <font>
+            <Font name="Arial" size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="51.0" layoutY="21.0" text="Страниц">
+         <font>
+            <Font name="Bodoni MT" size="15.0" />
+         </font>
+      </Label>
+      <TextField fx:id="strOne" layoutX="35.0" layoutY="40.0" prefHeight="25.0" prefWidth="97.0" />
+      <Label layoutX="165.0" layoutY="21.0" text="Строк">
+         <font>
+            <Font name="Bodoni MT" size="15.0" />
+         </font>
+      </Label>
+      <TextField fx:id="strkOne" layoutX="141.0" layoutY="40.0" prefHeight="25.0" prefWidth="97.0" />
+      <Label layoutX="258.0" layoutY="21.0" text="Элементов">
+         <font>
+            <Font name="Bodoni MT" size="15.0" />
+         </font>
+      </Label>
+      <TextField fx:id="elemOne" layoutX="247.0" layoutY="40.0" prefHeight="25.0" prefWidth="97.0" />
+      <Button fx:id="btnRead" layoutX="454.0" layoutY="90.0" mnemonicParsing="false" onMouseClicked="#readMemory" prefHeight="25.0" prefWidth="97.0" text="Считать" />
+      <Label layoutX="470.0" layoutY="24.0" text="Страница">
+         <font>
+            <Font name="Bodoni MT" size="15.0" />
+         </font>
+      </Label>
+      <TextField fx:id="strTwo" layoutX="454.0" layoutY="43.0" prefHeight="25.0" prefWidth="97.0" />
+      <Label layoutX="584.0" layoutY="24.0" text="Строка">
+         <font>
+            <Font name="Bodoni MT" size="15.0" />
+         </font>
+      </Label>
+      <TextField fx:id="strkTwo" layoutX="560.0" layoutY="43.0" prefHeight="25.0" prefWidth="97.0" />
+      <Label layoutX="685.0" layoutY="24.0" text="Элемент">
+         <font>
+            <Font name="Bodoni MT" size="15.0" />
+         </font>
+      </Label>
+      <TextField fx:id="elemTwo" layoutX="666.0" layoutY="43.0" prefHeight="25.0" prefWidth="97.0" />
+      <Button fx:id="btnWrite" layoutX="560.0" layoutY="90.0" mnemonicParsing="false" onMouseClicked="#changeCashValue" prefHeight="25.0" prefWidth="97.0" text="Записать" />
+      <TextField fx:id="value" layoutX="666.0" layoutY="89.0" prefHeight="25.0" prefWidth="97.0" />
+      <Button fx:id="btnCreate" layoutX="36.0" layoutY="89.0" mnemonicParsing="false" onMouseClicked="#createMemory" prefHeight="25.0" prefWidth="306.0" text="Создать" />
+      <Label layoutX="455.0" layoutY="173.0" text="Время выполнения :">
+         <font>
+            <Font name="Bodoni MT" size="12.0" />
+         </font>
+      </Label>
+      <Label fx:id="labelTime" layoutX="573.0" layoutY="173.0" prefHeight="16.0" prefWidth="160.0">
+         <font>
+            <Font name="Bodoni MT" size="13.0" />
+         </font>
+      </Label>
+      <Label layoutX="455.0" layoutY="155.0" text="Элемент :">
+         <font>
+            <Font name="Bodoni MT" size="12.0" />
+         </font>
+      </Label>
+      <Label fx:id="labelElement" layoutX="513.0" layoutY="155.0" prefHeight="16.0" prefWidth="126.0">
+         <font>
+            <Font name="Bodoni MT" size="13.0" />
+         </font>
+      </Label>
+      <Label layoutX="455.0" layoutY="137.0" text="Строка :">
+         <font>
+            <Font name="Bodoni MT" size="12.0" />
+         </font>
+      </Label>
+      <Label fx:id="labelStr" layoutX="507.0" layoutY="137.0" prefHeight="16.0" prefWidth="249.0">
+         <font>
+            <Font name="Bodoni MT" size="13.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>
