@@ -4,6 +4,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.Random;
 import java.util.Scanner;
 
 public class Memory {
@@ -15,10 +16,14 @@ public class Memory {
     }
 
     public void randomArray(int[][][] array) {
+        int min = 10;
+        int max = 3000;
+        int diff = max - min;
+        Random random = new Random();
         for (int i = 0; i < array.length ; i++) {
             for (int j = 0; j < array[i].length; j++) {
                 for (int k = 0; k < array[i][j].length; k++) {
-                    array[i][j][k]= (int) (Math.random()*10000+1);
+                    array[i][j][k]= random.nextInt(diff + 1)+min;
                 }
             }
         }

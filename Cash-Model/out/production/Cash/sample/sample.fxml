@@ -91,5 +91,15 @@
             <Font name="Bodoni MT" size="13.0" />
          </font>
       </Label>
+      <Label fx:id="labelFound" layoutX="576.0" layoutY="125.0" prefHeight="16.0" prefWidth="97.0">
+         <font>
+            <Font name="Bodoni MT" size="12.0" />
+         </font>
+      </Label>
+      <Label layoutX="461.0" layoutY="193.0" text="TAG">
+         <font>
+            <Font name="Bodoni MT" size="12.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

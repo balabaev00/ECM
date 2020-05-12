@@ -7,6 +7,8 @@ public class Controller {
 
     Memory memory;
     Cash cash;
+    int[][] storage;
+    int[] tag;
 
     @FXML
     private TextArea areaMemory;
@@ -53,6 +55,15 @@ public class Controller {
     @FXML
     private Label labelStr;
 
+    @FXML
+    private Label labelFound;
+
+    public void createTagArray(int[] tag) {
+        for (int i = 0; i < tag.length ; i++) {
+            tag[i]=-1;
+        }
+    }
+
     public void warning() {
         Alert alert = new Alert(Alert.AlertType.WARNING);
         alert.setTitle("Ошибка");
@@ -60,16 +71,25 @@ public class Controller {
         alert.showAndWait();
     }
 
+
     @FXML
     public void createMemory() {
         if(strkOne.getText().equals("") || strOne.getText().equals("") || elemOne.getText().equals("")) {
             warning();
             return;
         }
+        long startTime = System.nanoTime();
         cash = new Cash(Integer.parseInt(strOne.getText()),Integer.parseInt(strkOne.getText()),Integer.parseInt(elemOne.getText()));
         memory.randomArray(cash.getArray());
         memory.writeArray(cash.getArray());
+        long endTime = System.nanoTime();
+        long timeSpent = endTime - startTime;
+        String temp = String.valueOf(timeSpent/1000);
+        labelTime.setText(temp + " мс");
         areaMemory.setText(memory.readArray());
+        storage = new int[cash.getArray()[0].length][cash.getArray()[0][0].length];
+        tag = new int[cash.getArray()[0].length];
+        createTagArray(tag);
     }
 
     @FXML
@@ -85,27 +105,54 @@ public class Controller {
             alert.showAndWait();
             return;
         }
-        String text = "";
-        String str = "";
-        String element = "";
+        long startTime = System.nanoTime();
         int page = Integer.parseInt(strTwo.getText());
         int n = Integer.parseInt(strkTwo.getText());
         int m = Integer.parseInt(elemTwo.getText());
-        for (int i = 0; i < cash.getArray()[page].length; i++) {
-            for (int j = 0; j < cash.getArray()[page][i].length; j++) {
-                text += String.valueOf(cash.getArrayValue(page,i,j)) + " ";
-                if(i==n) {
-                    str+=String.valueOf(cash.getArrayValue(page,i,j)) + " ";
-                    if(j==m) {
-                        element+=String.valueOf(cash.getArrayValue(page,i,j));
-                    }
+        String text = "";
+        String str = "";
+        String element = "";
+
+        // Смотрим откуда считывать
+        if(storage[n][m]==cash.getArrayValue(page,n,m)) {
+            labelFound.setText("Из - Кэша");
+            element=String.valueOf(storage[n][m]);
+            for (int j = 0; j < storage[n].length; j++) {
+                str += String.valueOf(storage[n][j])  + " ";
+            }
+        }
+        else {
+            labelFound.setText("Из - ОП");
+            element=String.valueOf(cash.getArrayValue(page,n,m));
+            for (int j = 0; j < cash.getArray()[page][n].length; j++) {
+                str += String.valueOf(cash.getArrayValue(page,n,j))  + " ";
+            }
+            for (int j = 0; j < storage[n].length; j++) {
+                storage[n][j]=cash.getArrayValue(page,n,j);
                 }
+            for (int j = 0; j < storage.length; j++) {
+                if(j==n) {
+                    tag[j]=page;
+                }
+            }
+            }
+
+        // Итоговый вывод текста
+        for (int i = 0; i < storage.length; i++) {
+            text += tag[i] + "      ";
+            for (int j = 0; j < storage[i].length; j++) {
+                text+=storage[i][j]+"   ";
             }
             text+="\n";
         }
+
         areaCash.setText(text);
         labelStr.setText(str);
         labelElement.setText(element);
+        long endTime = System.nanoTime();
+        long timeSpent = endTime - startTime;
+        String temp = String.valueOf(timeSpent/1000);
+        labelTime.setText(temp + " мс");
     }
 
     @FXML
