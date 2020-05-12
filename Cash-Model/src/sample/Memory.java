@@ -16,8 +16,8 @@ public class Memory {
     }
 
     public void randomArray(int[][][] array) {
-        int min = 10;
-        int max = 3000;
+        int min = 1000;
+        int max = 8000;
         int diff = max - min;
         Random random = new Random();
         for (int i = 0; i < array.length ; i++) {
